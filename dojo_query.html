@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>	
+
+	
+</head>
+<body>
+	<button id="button1">button1</button>
+	
+	<button id="button2">button2</button> 
+	<script type="text/javascript">
+		function $Dojo(id){
+			
+			this.myId = document.getElementById(id);
+			
+			
+			this.click = function(callback)
+			{
+				console.log(this.myId);
+				this.myId.addEventListener("click", callback);
+			};
+			this.hover = function (hoverin, hoverout)
+			{
+				this.myId.addEventListener("mouseover", hoverin);
+				this.myId.addEventListener("mouseout", hoverout);
+			};
+			return this;
+		};
+
+		var myElem = new $Dojo("button1");
+		var clickAlert = function()
+		{
+			alert("clicked button1");
+		};
+		myElem.click(clickAlert);
+		var myElem = new $Dojo("button2");
+
+		var move = function() 
+		{
+			console.log("hovered");
+		};
+		var move1 = function() 
+		{
+			console.log("hovered out");
+		};
+		myElem.hover(move, move1);
+				
+			
+	
+
+	</script>
+</body>
+</html>
